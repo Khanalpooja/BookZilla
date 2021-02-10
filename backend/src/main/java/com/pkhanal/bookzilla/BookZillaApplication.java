@@ -1,13 +1,13 @@
-package com.org.bookzilla;
+package com.pkhanal.bookzilla;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BookzillaApplication {
+public class BookZillaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookzillaApplication.class, args);
+		SpringApplication.run(BookZillaApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.org.bookzilla;
+package com.pkhanal.bookzilla;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookzillaApplicationTests {
+class BookZillaApplicationTests {
 
 	@Test
 	void contextLoads() {
