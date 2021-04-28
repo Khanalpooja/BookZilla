@@ -1,0 +1,44 @@
+.green-text {
+    color: red;
+}
+
+.outer-container {
+    padding: 3em;
+}
+
+.main-container {
+    padding: 2em;
+}
+
+.header {
+    font-size: 24px;
+}
+
+.book {
+    height: 100%;
+}
+
+.book-thumbnail {
+    height: 300px;
+    width: 200px;
+}
+
+.book-cover {
+    width: 80%;
+}
+
+.input-field {
+    width: 600px;
+    color: black;
+}
+
+.search {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.search-input {
+    flex-grow: 4;
+}

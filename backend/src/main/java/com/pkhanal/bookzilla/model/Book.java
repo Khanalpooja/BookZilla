@@ -1,10 +1,11 @@
 package com.pkhanal.bookzilla.model;
 
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 
-@Data
+@Data @AllArgsConstructor
 public class Book {
     @Id private String id;
     private String name;
@@ -12,4 +13,5 @@ public class Book {
     private String cover;
     private String url;
     private String category;
+    private String author;
 }

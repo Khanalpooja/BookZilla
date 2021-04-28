@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface BookRepository extends MongoRepository<Book, String> {
 
-  List<Book> findByName(@Param("name") String name);
+  List<Book> findByNameContainingIgnoreCaseOrderByName(@Param("name") String name);
+
+  List<Book> findByDescriptionContainingIgnoreCase(@Param("name") String description);
+
+  List<Book> findByAuthorContainingIgnoreCase(@Param("name") String author);
 
 }

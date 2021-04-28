@@ -22,3 +22,9 @@ services:
 #    environment:
 #      ME_CONFIG_MONGODB_ADMINUSERNAME: dev
 #      ME_CONFIG_MONGODB_ADMINPASSWORD: dev
+
+
+  mongo-init:
+    build: ./mongo-init
+    links:
+      - mongo
