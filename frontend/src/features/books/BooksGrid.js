@@ -24,7 +24,7 @@ function BooksGrid(props) {
         let isMounted = true;
         API.get(link)
         .then(res => {
-            if (isMounted) setBooks(res.data._embedded.books)
+            if (isMounted) setBooks(deduplicate(res.data._embedded.books))
         })
         .catch(error => console.log(error))
         return () => { isMounted = false};
@@ -39,14 +39,17 @@ function BooksGrid(props) {
         let promises = stubs.map((stub) => API.get(`books/search/${stub}?name=${query}`)
             .then((res) => res.data._embedded.books));
         Promise.all(promises).then((values) => {
-            let m = new Map();
-            values.map((books) => {
-                books.map((book) => { m.set(book['id'], book); })
-            })
-            return m.values();
+            var books= [].concat.apply([], values);
+            return deduplicate(books);
         })
-        .then((books) => setBooks([...books]))
+        .then((books) => setBooks(books))
     };
+
+    const deduplicate = (books) => {
+        let m = new Map();
+        books.map((book) => { m.set(book['name'], book); })
+        return [...m.values()];
+    }
     
     
     useEffect(() => {getBooks("findByNameContainingIgnoreCaseOrderByName")(query)}, [query]);
