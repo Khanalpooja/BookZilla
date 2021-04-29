@@ -85,11 +85,16 @@ function BookDetail(props) {
                                 {edit ? <DarkerDisabledTextField name="url" label="Url" disabled={!edit} defaultValue={book.url} className="input-field" onChange={handleChange(book, setBook)}/> : <a href={book.url}>Download</a> }
                             </Grid>
 
-                            <Button variant={ edit ? "default" : "contained"} color="primary" onClick={toggleEdit}>
-                                {edit ? "Cancel" : "Edit"}
-                            </Button>
-                            { edit && 
-                                <Button variant="contained" color="primary" onClick={handleEdit} >Submit</Button>
+                            {
+                                props.isLoggedIn &&
+                                <div>
+                                    <Button variant={ edit ? "default" : "contained"} color="primary" onClick={toggleEdit}>
+                                        {edit ? "Cancel" : "Edit"}
+                                    </Button>
+                                    {edit && 
+                                        <Button variant="contained" color="primary" onClick={handleEdit} >Submit</Button>
+                                    }
+                                </div>
                             }
                     </Grid>
                     

@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from 'react';
 import AppBar from './AppBar';
 import { Grid } from '@material-ui/core';
 import BookList from '../books/BooksGrid';
@@ -9,12 +10,15 @@ import {
     Route,
     Link
 } from 'react-router-dom';
+import SignIn from '../users/SignIn';
 
 export default function MainApp(props) {
+    const [isLoggedIn, setLogin] = useState(false);
+
     return (
         <div>
             <Router>
-                <AppBar />
+                <AppBar isLoggedIn={isLoggedIn} logOut={() => setLogin(false)}/>
                 <Grid
                 container
                 direction="row"
@@ -25,8 +29,9 @@ export default function MainApp(props) {
                     <Grid item md={8}>
                         <Switch>
                             <Route path="/" exact component={BookList} />
-                            <Route path="/books/:bookId" exact component={BookDetail} />
+                            <Route path="/books/:bookId" exact render={() => <BookDetail isLoggedIn={isLoggedIn}/>} />
                             <Route path="/books" exact component={BookList} />
+                            <Route path="/login" exact render={() => <SignIn signUp={false} isloggedIn={isLoggedIn} setLogin={(val) => setLogin(val)}/>} />
                         </Switch>
                     </Grid>
                 </Grid>

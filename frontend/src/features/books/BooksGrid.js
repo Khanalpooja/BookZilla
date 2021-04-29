@@ -1,5 +1,5 @@
 import Book from "./Book";
-import { Grid, Typography, InputBase, TextField } from '@material-ui/core';
+import { Button, Grid, Typography, InputBase, TextField, Tooltip } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import React, {useEffect, useState} from 'react';
@@ -62,14 +62,16 @@ function BooksGrid(props) {
                 Books
             </Typography>
             <div className="search">
-                <div className="search-icon" onClick={() => detailSearch(query)}>
+                <div className="search-icon" >
                     <SearchIcon />
                 </div>
                 <TextField
                 placeholder="Search…"
                 onChange={e => setQuery(e.target.value)}
                 />
-
+                <Tooltip title="Search using title, author, and description">
+                <Button variant="contained" color="primary" onClick={() => detailSearch(query)} >Advanced Search</Button>
+                </Tooltip>
             </div>
             <Grid
             container
